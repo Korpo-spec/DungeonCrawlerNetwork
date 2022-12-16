@@ -43,6 +43,7 @@ public class PlayerController : NetworkBehaviour
     {
         transform.Translate(movVec);
     }
+    
 }
 
 public static class Extensions
