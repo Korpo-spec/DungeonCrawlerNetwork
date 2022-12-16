@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,12 @@ public class ConnectButtons : MonoBehaviour
     {
         hostBtn.onClick.AddListener(() => NetworkManager.Singleton.StartHost());
         clientBtn.onClick.AddListener(() => NetworkManager.Singleton.StartClient());
-        clientJonasBtn.onClick.AddListener(() => NetworkManager.Singleton.StartClient());
+        
+        clientJonasBtn.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.StartClient();
+            NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Address = "193.11.162.235";
+        });
         clientCasperBtn.onClick.AddListener(() => NetworkManager.Singleton.StartClient());
     }
 
