@@ -6,10 +6,16 @@ using UnityEngine;
 public class PlayerController : NetworkBehaviour
 {
     // Start is called before the first frame update
-
+    private Animator animator;
     
     void Start()
     {
+        animator = GetComponent<Animator>();
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
         
     }
 
@@ -20,7 +26,16 @@ public class PlayerController : NetworkBehaviour
 
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
-        TranslateServerRpc(new Vector3(inputX, 0, inputY)* Time.deltaTime);
+        Vector3 moveVec = new Vector3(inputX, 0, inputY);
+        if (moveVec.magnitude > 0)
+        {
+            animator.SetBool("walking", true);
+        }
+        else
+        {
+            animator.SetBool("walking", false);
+        }
+        TranslateServerRpc(moveVec* Time.deltaTime);
     }
     
     [ServerRpc]
