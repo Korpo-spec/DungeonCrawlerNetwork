@@ -36,10 +36,11 @@ public class PlayerController : NetworkBehaviour
             animator.SetBool("walking", false);
         }
         
-        transform.Translate(moveVec* Time.deltaTime);
-        TranslateServerRpc(transform.position+moveVec* Time.deltaTime);
-        
-        
+        transform.Translate(moveVec* Time.deltaTime, Space.World);
+        transform.rotation = Quaternion.LookRotation(moveVec);
+        //TranslateServerRpc(transform.position+moveVec* Time.deltaTime);
+
+
     }
     
     [ServerRpc]
