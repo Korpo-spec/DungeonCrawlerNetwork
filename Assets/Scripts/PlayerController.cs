@@ -45,7 +45,7 @@ public class PlayerController : NetworkBehaviour
             rotatedMoveVec.Normalize();
             
             transform.rotation = Quaternion.LookRotation(rotatedMoveVec);
-            transform.Translate(rotatedMoveVec * Time.deltaTime, Space.World);
+            //transform.Translate(rotatedMoveVec * Time.deltaTime, Space.World);
         }
         else
         {
@@ -57,6 +57,8 @@ public class PlayerController : NetworkBehaviour
             camera.transform.RotateAround(transform.position,Vector3.up,Input.mousePosition.x-mousePos.x);
             camera.transform.RotateAround(transform.position,camera.transform.right,mousePos.y-Input.mousePosition.y);
         }
+
+        
 
         mousePos = Input.mousePosition;
 
