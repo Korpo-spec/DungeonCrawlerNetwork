@@ -20,19 +20,19 @@ public class PlayerController : NetworkBehaviour
 
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
-        transform.TranslateServerRpc(new Vector3(inputX, 0, inputY)* Time.deltaTime);
+        TranslateServerRpc(new Vector3(inputX, 0, inputY)* Time.deltaTime);
     }
     
-    
+    [ServerRpc]
+    public void TranslateServerRpc(Vector3 movVec)
+    {
+        transform.Translate(movVec);
+    }
 }
 
 public static class Extensions
 {
-    [ServerRpc]
-    public static void TranslateServerRpc(this Transform transform, Vector3 movVec)
-    {
-        transform.Translate(movVec);
-    }
+    
     
     
 
