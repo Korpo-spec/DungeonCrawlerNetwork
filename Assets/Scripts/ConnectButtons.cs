@@ -19,10 +19,14 @@ public class ConnectButtons : MonoBehaviour
         
         clientJonasBtn.onClick.AddListener(() =>
         {
-            NetworkManager.Singleton.StartClient();
             NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Address = "193.11.162.235";
+            NetworkManager.Singleton.StartClient();
         });
-        clientCasperBtn.onClick.AddListener(() => NetworkManager.Singleton.StartClient());
+        clientCasperBtn.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Address = "193.11.160.199";
+            NetworkManager.Singleton.StartClient();
+        });
     }
 
     // Update is called once per frame
