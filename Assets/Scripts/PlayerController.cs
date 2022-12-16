@@ -16,7 +16,10 @@ public class PlayerController : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
-        
+        if (IsOwner)
+        {
+            Camera.main.GetComponent<CameraFollow>().objToFollow = transform;
+        }
     }
 
     // Update is called once per frame
@@ -30,6 +33,7 @@ public class PlayerController : NetworkBehaviour
         if (moveVec.magnitude > 0)
         {
             animator.SetBool("walking", true);
+            transform.rotation = Quaternion.LookRotation(moveVec);
         }
         else
         {
@@ -37,7 +41,7 @@ public class PlayerController : NetworkBehaviour
         }
         
         transform.Translate(moveVec* Time.deltaTime, Space.World);
-        transform.rotation = Quaternion.LookRotation(moveVec);
+        
         //TranslateServerRpc(transform.position+moveVec* Time.deltaTime);
 
 
