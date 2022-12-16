@@ -19,7 +19,8 @@ public class CameraFollow : MonoBehaviour
     {
         if (objToFollow)
         {
-            transform.position = objToFollow.position + offset;
+            transform.position = objToFollow.position;
+            //transform.rotation = objToFollow.rotation;
         }
         
     }

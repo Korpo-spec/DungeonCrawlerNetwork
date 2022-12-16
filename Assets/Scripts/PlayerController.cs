@@ -7,9 +7,13 @@ public class PlayerController : NetworkBehaviour
 {
     // Start is called before the first frame update
     private Animator animator;
+    private Camera camera;
+    private Vector3 mousePos;
     
     void Start()
     {
+        //mousePos = Input.mousePosition;
+        camera = FindObjectOfType<Camera>();
         animator = GetComponent<Animator>();
     }
 
@@ -18,7 +22,8 @@ public class PlayerController : NetworkBehaviour
         base.OnNetworkSpawn();
         if (IsOwner)
         {
-            Camera.main.GetComponent<CameraFollow>().objToFollow = transform;
+            camera = FindObjectOfType<Camera>();
+            camera.GetComponentInParent<CameraFollow>().objToFollow = transform;
         }
     }
 
@@ -26,22 +31,38 @@ public class PlayerController : NetworkBehaviour
     void Update()
     {
         if (!IsOwner) return;
-
+        Vector3 cameraForward = camera.transform.forward;
+        cameraForward.y = 0;
+        cameraForward.Normalize();
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
         Vector3 moveVec = new Vector3(inputX, 0, inputY);
         if (moveVec.magnitude > 0)
         {
             animator.SetBool("walking", true);
-            transform.rotation = Quaternion.LookRotation(moveVec);
+            var rotatedMoveVec = camera.transform.rotation * moveVec;
+            rotatedMoveVec.y = 0;
+            rotatedMoveVec.Normalize();
+            
+            transform.rotation = Quaternion.LookRotation(rotatedMoveVec);
+            transform.Translate(rotatedMoveVec * Time.deltaTime, Space.World);
         }
         else
         {
             animator.SetBool("walking", false);
         }
+
+        if (Input.GetMouseButton(1))
+        {
+            camera.transform.RotateAround(transform.position,Vector3.up,Input.mousePosition.x-mousePos.x);
+            camera.transform.RotateAround(transform.position,camera.transform.right,mousePos.y-Input.mousePosition.y);
+        }
+
+        mousePos = Input.mousePosition;
+
         
-        transform.Translate(moveVec* Time.deltaTime, Space.World);
         
+
         //TranslateServerRpc(transform.position+moveVec* Time.deltaTime);
 
 
