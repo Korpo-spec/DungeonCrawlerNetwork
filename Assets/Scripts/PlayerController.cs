@@ -35,13 +35,15 @@ public class PlayerController : NetworkBehaviour
         {
             animator.SetBool("walking", false);
         }
-        TranslateServerRpc(moveVec* Time.deltaTime);
+        transform.Translate(moveVec* Time.deltaTime);
+        
+        TranslateServerRpc(transform.position);
     }
     
     [ServerRpc]
     public void TranslateServerRpc(Vector3 movVec)
     {
-        transform.Translate(movVec);
+        transform.position = movVec;
     }
     
 }
