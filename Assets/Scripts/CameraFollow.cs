@@ -6,22 +6,22 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] public Transform objToFollow;
+    [SerializeField] public Camera cameraRef;
 
-    private Vector3 offset;
+    //public float DistanceToObj;
+
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position;
+        cameraRef = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (objToFollow)
-        {
-            transform.position = objToFollow.position;
-            //transform.rotation = objToFollow.rotation;
-        }
-        
+        if (!objToFollow) return;
+        //DistanceToObj = Vector3.Distance(objToFollow.position, cameraRef.transform.position);
+        transform.position = objToFollow.position;
+        //transform.rotation = objToFollow.rotation;
     }
 }
