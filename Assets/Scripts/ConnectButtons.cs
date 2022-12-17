@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ConnectButtons : MonoBehaviour
 {
     [SerializeField] private Button hostBtn;
+    [SerializeField] private Button hostLocalBtn;
     [SerializeField] private Button clientBtn;
     [SerializeField] private Button clientJonasBtn;
     [SerializeField] private Button clientCasperBtn;
@@ -15,8 +16,12 @@ public class ConnectButtons : MonoBehaviour
     void Start()
     {
         hostBtn.onClick.AddListener(() => NetworkManager.Singleton.StartHost());
+        hostLocalBtn.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.ServerListenAddress = "";
+            NetworkManager.Singleton.StartClient();
+        });
         clientBtn.onClick.AddListener(() => NetworkManager.Singleton.StartClient());
-        
         clientJonasBtn.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Address = "193.11.162.235";

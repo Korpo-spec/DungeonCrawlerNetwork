@@ -9,7 +9,9 @@ public class PlayerController : NetworkBehaviour
     private Animator animator;
     private Camera camera;
     private Vector3 mousePos;
-    
+    private static readonly int Walking = Animator.StringToHash("walking");
+    private static readonly int Running = Animator.StringToHash("running");
+
     void Start()
     {
         //mousePos = Input.mousePosition;
@@ -37,19 +39,20 @@ public class PlayerController : NetworkBehaviour
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
         Vector3 moveVec = new Vector3(inputX, 0, inputY);
+        var rotatedMoveVec = camera.transform.rotation * moveVec;
+        rotatedMoveVec.y = 0;
+        rotatedMoveVec.Normalize();
         if (moveVec.magnitude > 0)
         {
-            animator.SetBool("walking", true);
-            var rotatedMoveVec = camera.transform.rotation * moveVec;
-            rotatedMoveVec.y = 0;
-            rotatedMoveVec.Normalize();
-            
+            animator.SetBool(Walking, true);
+            animator.SetBool(Running, Input.GetKey(KeyCode.LeftShift));
             transform.rotation = Quaternion.LookRotation(rotatedMoveVec);
             //transform.Translate(rotatedMoveVec * Time.deltaTime, Space.World);
         }
         else
         {
-            animator.SetBool("walking", false);
+            animator.SetBool(Running, false);
+            animator.SetBool(Walking, false);
         }
 
         if (Input.GetMouseButton(1))
