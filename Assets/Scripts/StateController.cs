@@ -16,6 +16,16 @@ public class StateController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner)
+        {
+            enabled = false;
+            return;
+        }
         currentState = Instantiate(defaultState);
         currentState.OnEnter(this);
     }
