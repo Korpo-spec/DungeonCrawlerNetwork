@@ -50,7 +50,7 @@ public class StateController : NetworkBehaviour
     {
         changeState = false;
         currentState.OnExit();
-        currentState = nextState;
+        currentState = Instantiate(nextState);
         currentState.OnEnter(this);
     }
 

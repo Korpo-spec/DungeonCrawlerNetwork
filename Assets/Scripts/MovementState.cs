@@ -7,26 +7,28 @@ public class MovementState : State
 {
     public float MaxZoom = 10;
     public float MinZoom = 0.1f;
+    [SerializeField] private PistolShotState shootstate;
     private Animator animator;
     private Camera camera;
-    
+
     private Vector3 mousePos;
     private Vector2 zoomLevel;
-    
-    
+
+
     private static readonly int Walking = Animator.StringToHash("walking");
     private static readonly int Running = Animator.StringToHash("running");
+
     public override void OnEnter(StateController controller)
     {
         base.OnEnter(controller);
         camera = FindObjectOfType<Camera>();
         animator = controller.GetComponent<Animator>();
         camera.GetComponentInParent<CameraFollow>().objToFollow = controller.transform;
-        
     }
 
     public override void UpdateState()
     {
+        Debug.Log("movementstateupdate");
         Vector3 cameraForward = camera.transform.forward;
         cameraForward.y = 0;
         cameraForward.Normalize();
@@ -54,16 +56,22 @@ public class MovementState : State
 
         mousePos = Input.mousePosition;
         zoomLevel = Input.mouseScrollDelta;
+
+        if (Input.GetKeyDown((KeyCode.F)))
+        {
+            controller.Transistion(shootstate);
+        }
     }
-    
+
     private void ManageCameraRotation(bool getMouseButton)
     {
         if (getMouseButton)
         {
-            camera.transform.RotateAround(controller.transform.position,Vector3.up,Input.mousePosition.x-mousePos.x);
-            camera.transform.RotateAround(controller.transform.position,camera.transform.right,mousePos.y-Input.mousePosition.y);
+            camera.transform.RotateAround(controller.transform.position, Vector3.up,
+                Input.mousePosition.x - mousePos.x);
+            camera.transform.RotateAround(controller.transform.position, camera.transform.right,
+                mousePos.y - Input.mousePosition.y);
         }
-        
     }
 
     private void ManageCameraZoom(Vector2 mouseScrollDelta)
@@ -72,6 +80,7 @@ public class MovementState : State
         {
             return;
         }
+
         //var oldDistanceToObj = camera.GetComponentInParent<CameraFollow>().DistanceToObj;
         var oldDistanceToObj = Vector3.Distance(camera.transform.position, controller.transform.position);
         var newDistanceToObj = oldDistanceToObj;
@@ -87,7 +96,7 @@ public class MovementState : State
         }
 
         Vector3 newPosition = camera.transform.localPosition;
-        newPosition *= newDistanceToObj/oldDistanceToObj;
+        newPosition *= newDistanceToObj / oldDistanceToObj;
         camera.transform.localPosition = newPosition;
     }
 }
