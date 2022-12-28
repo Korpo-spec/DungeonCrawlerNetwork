@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
+/*
+ *  OBS:OBSOLETE CODE
+ * Code has been moved to MovementState.cs and is only a reference for future bugs
+ * 
+ */
 public class PlayerController : NetworkBehaviour
 {
     public float MaxZoom = 10;
