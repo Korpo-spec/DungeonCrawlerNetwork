@@ -260,7 +260,7 @@ Transform:
   - {fileID: 483532}
   m_Father: {fileID: 496550}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.243982, y: 9.083538, z: 30.10827}
 --- !u!1 &105336
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,7 +332,7 @@ Transform:
   - {fileID: 427602}
   m_Father: {fileID: 470560}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.0012774453, y: -0.69479597, z: 21.455845}
 --- !u!1 &107314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,7 +1849,7 @@ Transform:
   - {fileID: 462282}
   m_Father: {fileID: 409096}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -5.8988647, y: -28.031075, z: 7.403909}
 --- !u!1 &143872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,7 +2047,7 @@ Transform:
   - {fileID: 415162}
   m_Father: {fileID: 496550}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.42377993, y: -16.169184, z: 10.645363}
 --- !u!1 &147280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,7 +2142,7 @@ Transform:
   - {fileID: 486902}
   m_Father: {fileID: 424178}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.42767516, y: -0.45755994, z: 30.637632}
 --- !u!1 &153472
 GameObject:
   m_ObjectHideFlags: 0
@@ -2854,7 +2854,12 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'Root'\n\tTransform 'IndexFinger_02'\n\tTransform
+    'Elbow_R'\n\tTransform 'Finger_02'\n\tTransform 'Finger_03'\n\tTransform 'Thumb_02'\n\tTransform
+    'Ball_R'\n\tTransform 'Clavicle_L'\n\tTransform 'Finger_01'\n\tTransform 'Neck'\n\tand
+    more ...\n\tFrom animation clip 'mixamo.com'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -3568,7 +3573,7 @@ Transform:
   - {fileID: 472338}
   m_Father: {fileID: 415162}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.970905, y: -0.850704, z: 16.522394}
 --- !u!1 &176176
 GameObject:
   m_ObjectHideFlags: 0
@@ -4128,7 +4133,7 @@ Transform:
   - {fileID: 431074}
   m_Father: {fileID: 496550}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.6851156, y: -14.671949, z: 26.35792}
 --- !u!1 &190830
 GameObject:
   m_ObjectHideFlags: 0
@@ -4357,7 +4362,7 @@ Transform:
   - {fileID: 452798}
   m_Father: {fileID: 431074}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.7794841, y: -0.27476713, z: 5.8675656}
 --- !u!1 &193446
 GameObject:
   m_ObjectHideFlags: 0
