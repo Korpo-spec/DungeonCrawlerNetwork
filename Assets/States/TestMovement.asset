@@ -15,3 +15,4 @@ MonoBehaviour:
   controller: {fileID: 0}
   MaxZoom: 10
   MinZoom: 0.1
+  shootstate: {fileID: 11400000, guid: 37175c08fb71df44bb04b58dee3a37a0, type: 2}
