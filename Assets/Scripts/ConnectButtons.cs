@@ -19,7 +19,7 @@ public class ConnectButtons : MonoBehaviour
         hostLocalBtn.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.ServerListenAddress = "";
-            NetworkManager.Singleton.StartClient();
+            NetworkManager.Singleton.StartHost();
         });
         clientBtn.onClick.AddListener(() => NetworkManager.Singleton.StartClient());
         clientJonasBtn.onClick.AddListener(() =>
