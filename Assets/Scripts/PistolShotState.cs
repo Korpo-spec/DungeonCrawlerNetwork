@@ -32,4 +32,9 @@ public class PistolShotState : State
         }
 
     }
+
+    private void spawnServerRpc()
+    {
+        
+    }
 }
