@@ -29,7 +29,7 @@ public class PistolShotState : State
         
         if (!networkAnimator.Animator.IsPlayingState("ShootingGun"))
         {
-            controller.SpawnServerRpc(projectile.name);
+            controller.SpawnServerRpc(projectile.name, controller.transform.position);
             
             Debug.Log("transition");
             controller.Transistion(movementstate);
