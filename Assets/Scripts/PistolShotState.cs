@@ -20,7 +20,7 @@ public class PistolShotState : State
 
     public override void UpdateState()
     {
-        if (animator.IsPlaying("ShootingGun"))
+        if (!animator.IsPlaying("ShootingGun"))
         {
             controller.Transistion(movementstate);
         }
