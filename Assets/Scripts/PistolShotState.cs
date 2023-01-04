@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using Unity.Netcode.Components;
 using UnityEngine;
 
@@ -8,7 +9,9 @@ public class PistolShotState : State
 {
 
     [SerializeField] private MovementState movementstate;
+    [SerializeField] private GameObject projectile;
     private NetworkAnimator networkAnimator;
+    
     
     private static readonly int ShootGun = Animator.StringToHash("ShootGun");
 
@@ -22,12 +25,17 @@ public class PistolShotState : State
 
     public override void UpdateState()
     {
+        
+        
         if (!networkAnimator.Animator.IsPlayingState("ShootingGun"))
         {
+            controller.SpawnServerRpc(projectile.name);
             
             Debug.Log("transition");
             controller.Transistion(movementstate);
         }
 
     }
+
+    
 }
