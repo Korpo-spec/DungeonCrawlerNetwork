@@ -15,22 +15,33 @@ public class ConnectButtons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hostBtn.onClick.AddListener(() => NetworkManager.Singleton.StartHost());
+        hostBtn.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.StartHost();
+            DisableButtons();
+        });
         hostLocalBtn.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.ServerListenAddress = "";
             NetworkManager.Singleton.StartHost();
+            DisableButtons();
         });
-        clientBtn.onClick.AddListener(() => NetworkManager.Singleton.StartClient());
+        clientBtn.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.StartClient();
+            DisableButtons();
+        });
         clientJonasBtn.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Address = "193.11.162.235";
             NetworkManager.Singleton.StartClient();
+            DisableButtons();
         });
         clientCasperBtn.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Address = "193.11.160.199";
             NetworkManager.Singleton.StartClient();
+            DisableButtons();
         });
     }
 
@@ -38,5 +49,10 @@ public class ConnectButtons : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void DisableButtons()
+    {
+        this.gameObject.SetActive(false);
     }
 }
