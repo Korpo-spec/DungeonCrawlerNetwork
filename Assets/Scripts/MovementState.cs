@@ -28,7 +28,7 @@ public class MovementState : State
 
     public override void UpdateState()
     {
-        Debug.Log("movementstateupdate");
+        
         Vector3 cameraForward = camera.transform.forward;
         cameraForward.y = 0;
         cameraForward.Normalize();
