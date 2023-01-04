@@ -78,4 +78,19 @@ public class StateController : NetworkBehaviour
         g = Instantiate(g);
         g.GetComponent<NetworkObject>().Spawn();
     }
+    [ServerRpc]
+    public void SpawnServerRpc(FixedString128Bytes prefabName, Vector3 position)
+    {
+        GameObject g = Resources.Load<GameObject>("Prefab/"+ prefabName);
+        g = Instantiate(g, position, Quaternion.identity);
+        g.GetComponent<NetworkObject>().Spawn();
+    }
+    
+    [ServerRpc]
+    public void SpawnServerRpc(FixedString128Bytes prefabName, Vector3 position, Quaternion rotation)
+    {
+        GameObject g = Resources.Load<GameObject>("Prefab/"+ prefabName);
+        g = Instantiate(g, position, rotation);
+        g.GetComponent<NetworkObject>().Spawn();
+    }
 }
