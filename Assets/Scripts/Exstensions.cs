@@ -8,4 +8,6 @@ public static class Exstensions
     {
         return !(!animator.GetCurrentAnimatorStateInfo(0).IsName(animStateName) && !animator.IsInTransition(0));
     }
+    
+    
 }

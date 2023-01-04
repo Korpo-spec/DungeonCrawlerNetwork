@@ -13,6 +13,8 @@ public class StateController : NetworkBehaviour
     private State nextState;
 
     private bool changeState;
+
+    private bool ignoreFirstUpdate;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,10 +35,18 @@ public class StateController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (ignoreFirstUpdate)
+        {
+            ignoreFirstUpdate = false;
+            return;
+        }
+        
         currentState.UpdateState();
         if (changeState)
         {
             OnTransition();
+            return;
         }
     }
 
@@ -52,6 +62,7 @@ public class StateController : NetworkBehaviour
         currentState.OnExit();
         currentState = Instantiate(nextState);
         currentState.OnEnter(this);
+        ignoreFirstUpdate = true;
     }
 
     private void OnTriggerEnter(Collider other)

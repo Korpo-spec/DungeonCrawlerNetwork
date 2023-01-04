@@ -10,6 +10,7 @@ public class PistolShotState : State
     [SerializeField] private MovementState movementstate;
     private NetworkAnimator networkAnimator;
     
+    
     private static readonly int ShootGun = Animator.StringToHash("ShootGun");
 
     public override void OnEnter(StateController controller)
@@ -22,6 +23,7 @@ public class PistolShotState : State
 
     public override void UpdateState()
     {
+        
         if (!networkAnimator.Animator.IsPlayingState("ShootingGun"))
         {
             
