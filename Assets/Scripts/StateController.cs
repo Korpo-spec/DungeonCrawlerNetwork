@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -68,5 +69,13 @@ public class StateController : NetworkBehaviour
     private void OnTriggerEnter(Collider other)
     {
         currentState.OnTriggerEnter(other);
+    }
+    
+    [ServerRpc]
+    public void SpawnServerRpc(FixedString128Bytes prefabName)
+    {
+        GameObject g = Resources.Load<GameObject>("Prefab/"+ prefabName);
+        g = Instantiate(g);
+        g.GetComponent<NetworkObject>().Spawn();
     }
 }
