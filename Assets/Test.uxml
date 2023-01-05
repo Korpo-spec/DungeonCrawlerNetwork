@@ -1,12 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="wtf" src="project://database/Assets/wtf.uxml?fileID=9197481963319205126&amp;guid=2109ff1e12cb0c541902511748d156d9&amp;type=3#wtf" />
     <Style src="project://database/Assets/Styles.uss?fileID=7433441132597879392&amp;guid=4858c079070cae74ba93484cab3741e9&amp;type=3#Styles" />
     <ui:VisualElement style="align-items: center; justify-content: center; height: 702px; width: 1266px; flex-grow: 1;">
         <ui:VisualElement style="height: 300px; width: 300px; background-color: rgb(0, 0, 0); border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; align-items: center; justify-content: center;">
             <ui:Button text="Host" display-tooltip-when-elided="true" name="host-button" class="button-style" />
             <ui:Button text="Connect" display-tooltip-when-elided="true" name="connect-button" class="button-style" />
+            <ui:Toggle label="LocalHost" name="localHost" style="-unity-background-image-tint-color: rgba(255, 255, 255, 255); background-color: rgba(255, 255, 255, 255); width: 184px;" />
             <ui:TextField picking-mode="Ignore" value="127.0.0.1" text="127.0.0.1" max-length="15" readonly="false" name="IP-address" focusable="true" password="false" style="background-color: rgb(255, 255, 255); width: 187px;" />
-            <ui:Instance template="wtf" name="wtf" />
             <ui:VisualElement style="align-items: flex-start; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start;">
                 <ui:Button text="Jonas IP" display-tooltip-when-elided="true" name="jonas-ipbutton" class="button-small-style" />
                 <ui:Button text="Casper IP" display-tooltip-when-elided="true" name="casper-ipbutton" class="button-small-style" />
