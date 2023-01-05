@@ -28,4 +28,9 @@ public class State : ScriptableObject
     {
         
     }
+
+    public virtual void OnGetSpawnedGameObj(string nameOfGameObj)
+    {
+        
+    }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
@@ -72,26 +73,40 @@ public class StateController : NetworkBehaviour
         currentState.OnTriggerEnter(other);
     }
     
-    [ServerRpc]
-    public void SpawnServerRpc(FixedString128Bytes prefabName)
-    {
-        GameObject g = Resources.Load<GameObject>("Prefab/"+ prefabName);
-        g = Instantiate(g);
-        g.GetComponent<NetworkObject>().Spawn();
-    }
-    [ServerRpc]
-    public void SpawnServerRpc(FixedString128Bytes prefabName, Vector3 position)
-    {
-        GameObject g = Resources.Load<GameObject>("Prefab/"+ prefabName);
-        g = Instantiate(g, position, Quaternion.identity);
-        g.GetComponent<NetworkObject>().Spawn();
-    }
+    
+
+    private uint id;
     
     [ServerRpc]
     public void SpawnServerRpc(FixedString128Bytes prefabName, Vector3 position, Quaternion rotation)
     {
         GameObject g = Resources.Load<GameObject>("Prefab/"+ prefabName);
         g = Instantiate(g, position, rotation);
+        g.name = prefabName + id.ToString();
+        id++;
         g.GetComponent<NetworkObject>().Spawn();
+        ClientGetGameObjectClientRpc(g.name);
     }
+    
+    [ServerRpc]
+    public void SpawnServerRpc(FixedString128Bytes prefabName, Vector3 position, Quaternion rotation, FixedString512Bytes jsonData)
+    {
+        GameObject g = Resources.Load<GameObject>("Prefab/"+ prefabName);
+        g = Instantiate(g, position, rotation);
+        if (g.TryGetComponent(out ISpawnData data) ) data.DeserializeSpawnData(jsonData.ToString());
+        
+        g.GetComponent<NetworkObject>().Spawn();
+        
+    }
+
+    [ClientRpc]
+    private void ClientGetGameObjectClientRpc(FixedString128Bytes gameObjectName)
+    {
+        if (IsOwner)
+        {
+            currentState.OnGetSpawnedGameObj(gameObjectName.ToString());
+        }
+    }
+    
+    
 }
