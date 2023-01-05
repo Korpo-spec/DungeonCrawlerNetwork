@@ -41,7 +41,7 @@ public class UIController : MonoBehaviour
     }
     void ConnectButtonPressed()
     {
-        NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.ServerListenAddress = IPAddress.value;
+        NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Address = IPAddress.value;
         NetworkManager.Singleton.StartClient();
         Disable();
     }
