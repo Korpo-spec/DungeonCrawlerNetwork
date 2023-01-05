@@ -1,0 +1,82 @@
+.button-style {
+    height: 44px;
+    width: 89px;
+    justify-content: flex-start;
+    align-items: auto;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.button-style:hover {
+    height: 44px;
+    width: 89px;
+    justify-content: flex-start;
+    align-items: auto;
+    background-color: rgb(125, 125, 125);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.button-style:active {
+    height: 44px;
+    width: 89px;
+    justify-content: flex-start;
+    align-items: auto;
+    background-color: rgb(53, 53, 53);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+
+.button-small-style {
+    height: 20px;
+    width: 50px;
+    justify-content: flex-start;
+    align-items: auto;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    font-size: 10px;
+}
+
+.button-small-style:hover {
+    height: 20px;
+    width: 50px;
+    justify-content: flex-start;
+    align-items: auto;
+    background-color: rgb(154, 154, 154);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    font-size: 10px;
+}
+
+.button-small-style:active {
+    height: 20px;
+    width: 50px;
+    justify-content: flex-start;
+    align-items: auto;
+    background-color: rgb(48, 48, 48);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 255);
+}
