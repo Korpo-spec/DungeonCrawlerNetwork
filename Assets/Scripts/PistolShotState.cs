@@ -67,7 +67,8 @@ public class PistolShotState : State
             customData.direction = vec;
             customData.direction.y = 0;
             customData.direction.Normalize();
-            
+            customData.direction = customData.direction.RoundVector3(4);
+            //TODO: Fix Json Serializing float with alot of space
             controller.SpawnServerRpc(projectile.name, controller.transform.position, Quaternion.identity, JsonUtility.ToJson(customData));
             hasShot = true;
         }
