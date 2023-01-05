@@ -8,7 +8,7 @@ using UnityEngine;
  * Code has been moved to MovementState.cs and is only a reference for future bugs
  * 
  */
-public class PlayerController : NetworkBehaviour
+public class PlayerControllerOLD : NetworkBehaviour
 {
     public float MaxZoom = 10;
     public float MinZoom = 0.1f;

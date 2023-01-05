@@ -21,14 +21,12 @@ public class MovementState : State
     public override void OnEnter(StateController controller)
     {
         base.OnEnter(controller);
-        camera = FindObjectOfType<Camera>();
+        GetCamera();
         animator = controller.GetComponent<Animator>();
-        camera.GetComponentInParent<CameraFollow>().objToFollow = controller.transform;
     }
-
     public override void UpdateState()
     {
-        
+        if (!camera) GetCamera();
         Vector3 cameraForward = camera.transform.forward;
         cameraForward.y = 0;
         cameraForward.Normalize();
@@ -98,5 +96,11 @@ public class MovementState : State
         Vector3 newPosition = camera.transform.localPosition;
         newPosition *= newDistanceToObj / oldDistanceToObj;
         camera.transform.localPosition = newPosition;
+    }
+
+    private void GetCamera()
+    {
+        camera = FindObjectOfType<Camera>();
+        camera.GetComponentInParent<CameraFollow>().objToFollow = controller.transform;
     }
 }

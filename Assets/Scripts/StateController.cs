@@ -33,6 +33,7 @@ public class StateController : NetworkBehaviour
         currentState = Instantiate(defaultState);
         currentState.OnEnter(this);
     }
+    
 
     // Update is called once per frame
     void Update()
