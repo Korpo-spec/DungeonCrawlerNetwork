@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using Unity.Netcode;
 using Unity.Netcode.Components;
 using UnityEngine;
@@ -29,7 +30,8 @@ public class PistolShotState : State
         
         if (!networkAnimator.Animator.IsPlayingState("ShootingGun"))
         {
-            controller.SpawnServerRpc(projectile.name, controller.transform.position);
+            ProjectileSpawnData customData = new ProjectileSpawnData() {direction = controller.transform.forward};
+            controller.SpawnServerRpc(projectile.name, controller.transform.position, Quaternion.identity, JsonUtility.ToJson(customData));
             
             Debug.Log("transition");
             controller.Transistion(movementstate);
@@ -37,5 +39,8 @@ public class PistolShotState : State
 
     }
 
-    
+    public override void OnGetSpawnedGameObj(string nameOfGameObj)
+    {
+        base.OnGetSpawnedGameObj(nameOfGameObj);
+    }
 }
