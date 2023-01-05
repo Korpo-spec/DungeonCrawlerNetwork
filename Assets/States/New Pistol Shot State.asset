@@ -15,3 +15,4 @@ MonoBehaviour:
   controller: {fileID: 0}
   movementstate: {fileID: 11400000, guid: 043e6de914461f949bfe146e4747e3ad, type: 2}
   projectile: {fileID: 8346182620889335583, guid: c6344505bffeeea4a85819e4111719e5, type: 3}
+  rangeObj: {fileID: 5267411674713893105, guid: 1bf2a779a4d1fb946922bea4c9e11bb4, type: 3}

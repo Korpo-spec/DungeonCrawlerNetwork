@@ -10,7 +10,7 @@ public class Projectile : NetworkBehaviour, ISpawnData
     public void DeserializeSpawnData(string data)
     {
         spawnData = JsonUtility.FromJson<ProjectileSpawnData>(data);
-        Debug.Log("Deserialize");
+        
     }
 
     private Vector3 direction;
@@ -24,12 +24,15 @@ public class Projectile : NetworkBehaviour, ISpawnData
     public override void OnNetworkSpawn()
     {
         direction = spawnData.direction;
-        Debug.Log("Spawn");
+        
+        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(direction * Time.deltaTime);
+        
+        transform.Translate(direction * Time.deltaTime, Space.World);
     }
 }
