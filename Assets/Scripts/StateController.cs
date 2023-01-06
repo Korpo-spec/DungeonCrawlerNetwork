@@ -39,6 +39,8 @@ public class StateController : NetworkBehaviour
     void Update()
     {
 
+        if (!IsOwner) return;
+        
         if (ignoreFirstUpdate)
         {
             ignoreFirstUpdate = false;
