@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (!objToFollow) return;
         //DistanceToObj = Vector3.Distance(objToFollow.position, cameraRef.transform.position);
-        transform.position = objToFollow.position;
+        //transform.position = objToFollow.position;
         //transform.rotation = objToFollow.rotation;
     }
 }
