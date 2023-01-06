@@ -35,10 +35,7 @@ public class CameraManager : NetworkBehaviour
         
         mousePos = Input.mousePosition;
         zoomLevel = Input.mouseScrollDelta;
-    }
-
-    private void LateUpdate()
-    {
+        
         HandleCameraFollow();
     }
 
