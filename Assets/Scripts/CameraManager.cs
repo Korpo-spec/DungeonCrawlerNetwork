@@ -64,9 +64,9 @@ public class CameraManager : NetworkBehaviour
     {
         if (getMouseButton)
         {
-            camera.transform.RotateAround(transform.position, Vector3.up,
+            camera.transform.RotateAround(cameraFollow.position, Vector3.up,
                 Input.mousePosition.x - mousePos.x);
-            camera.transform.RotateAround(transform.position, camera.transform.right,
+            camera.transform.RotateAround(cameraFollow.position, camera.transform.right,
                 mousePos.y - Input.mousePosition.y);
         }
     }
