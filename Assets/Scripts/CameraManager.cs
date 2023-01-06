@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class CameraManager : MonoBehaviour
+public class CameraManager : NetworkBehaviour
 {
 
     public float MaxZoom = 10;
@@ -26,10 +27,9 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
+        if(!IsOwner) return;
         if (!camera) GetCamera();
-        
-        
-        
+
         ManageCameraRotation(Input.GetMouseButton(1));
         ManageCameraZoom(Input.mouseScrollDelta);
         
@@ -59,7 +59,7 @@ public class CameraManager : MonoBehaviour
     private void GetCamera()
     {
         //camera = FindObjectOfType<Camera>();
-        camera = Camera.main;
+        camera = FindObjectOfType<Camera>();
         cameraFollow = camera.transform.parent;
         //camera.GetComponentInParent<CameraFollow>().objToFollow = transform;
     }
