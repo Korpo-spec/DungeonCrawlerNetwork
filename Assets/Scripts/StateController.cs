@@ -72,7 +72,11 @@ public class StateController : NetworkBehaviour
     {
         currentState.OnTriggerEnter(other);
     }
-    
+
+    public void AnimationEvent(string eventName)
+    {
+        currentState.OnAnimatorEvent(eventName);
+    }
     
 
     private uint id;

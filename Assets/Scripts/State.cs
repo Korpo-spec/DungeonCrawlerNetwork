@@ -33,4 +33,9 @@ public class State : ScriptableObject
     {
         
     }
+
+    public virtual void OnAnimatorEvent(String eventName)
+    {
+        
+    }
 }

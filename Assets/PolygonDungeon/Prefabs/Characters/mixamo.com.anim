@@ -44593,7 +44593,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.46666667
+        time: 0.56666666
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -44611,8 +44611,8 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.5333333
-        value: 0
+        time: 3.5333335
+        value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -44623,7 +44623,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Root/Hips
+    path: Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/ScifiHandGun
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -44677,7 +44677,7 @@ AnimationClip:
       customType: 8
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3794787658
+      path: 1407791622
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -90149,7 +90149,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.46666667
+        time: 0.56666666
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -90167,8 +90167,8 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.5333333
-        value: 0
+        time: 3.5333335
+        value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -90179,10 +90179,17 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Root/Hips
+    path: Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/ScifiHandGun
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.1333333
+    functionName: AnimationEvent
+    data: ShootGun
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -19,6 +19,19 @@ public static class Exstensions
         vec.z = MathF.Round(vec.z, decimals);
         return vec;
     }
+
+    public static Transform FindRecusiveChild(this Transform transform, string name)
+    {
+        foreach(Transform child in transform)
+        {
+            if(child.name == name ) return child;
+            var result = child.FindRecusiveChild(name);
+            if (result != null)
+                return result;
+        }
+        return null;
+        
+    }
     
     
 }

@@ -42,6 +42,8 @@ public class PistolShotState : State
             {
                 aiming = false;
                 Destroy(rangeObj);
+                controller.transform.rotation = Quaternion.LookRotation(vec, Vector3.up);
+                controller.transform.rotation = Quaternion.Euler(controller.transform.rotation.eulerAngles + new Vector3(0,90,0));
                 networkAnimator.SetTrigger(ShootGun);
             }
             else
@@ -57,21 +59,7 @@ public class PistolShotState : State
         
         
         
-        if (!hasShot)
-        {
-            ProjectileSpawnData customData = new ProjectileSpawnData();
-            Vector3 vec = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,10));
-            vec.y = controller.transform.position.y;
-            vec -= controller.transform.position;
-            
-            customData.direction = vec;
-            customData.direction.y = 0;
-            customData.direction.Normalize();
-            customData.direction = customData.direction.RoundVector3(4);
-            //TODO: Fix Json Serializing float with alot of space
-            controller.SpawnServerRpc(projectile.name, controller.transform.position, Quaternion.identity, JsonUtility.ToJson(customData));
-            hasShot = true;
-        }
+        
         
         
         
@@ -84,8 +72,28 @@ public class PistolShotState : State
 
     }
 
-    public override void OnGetSpawnedGameObj(string nameOfGameObj)
+    public override void OnAnimatorEvent(string eventName)
     {
-        base.OnGetSpawnedGameObj(nameOfGameObj);
+        if (eventName != "ShootGun")
+        {
+            return;
+        }
+        if (!hasShot)
+        {
+            ProjectileSpawnData customData = new ProjectileSpawnData();
+            Vector3 vec = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,10));
+            vec.y = controller.transform.position.y;
+            vec -= controller.transform.position;
+            
+            customData.direction = vec;
+            customData.direction.y = 0;
+            customData.direction.Normalize();
+            customData.direction = customData.direction.RoundVector3(4);
+            
+            //TODO: Fix Json Serializing float with alot of space
+            
+            controller.SpawnServerRpc(projectile.name, controller.transform.FindRecusiveChild("ShootPoint").position, Quaternion.identity, JsonUtility.ToJson(customData));
+            hasShot = true;
+        }
     }
 }
