@@ -27,9 +27,9 @@ public class MovementState : State
     public override void UpdateState()
     {
         if (!camera) GetCamera();
-        Vector3 cameraForward = camera.transform.forward;
-        cameraForward.y = 0;
-        cameraForward.Normalize();
+        // Vector3 cameraForward = camera.transform.forward;
+        // cameraForward.y = 0;
+        // cameraForward.Normalize();
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
         Vector3 moveVec = new Vector3(inputX, 0, inputY);
@@ -49,8 +49,8 @@ public class MovementState : State
             animator.SetBool(Walking, false);
         }
 
-        ManageCameraRotation(Input.GetMouseButton(1));
-        ManageCameraZoom(Input.mouseScrollDelta);
+        //ManageCameraRotation(Input.GetMouseButton(1));
+        //ManageCameraZoom(Input.mouseScrollDelta);
 
         mousePos = Input.mousePosition;
         zoomLevel = Input.mouseScrollDelta;
