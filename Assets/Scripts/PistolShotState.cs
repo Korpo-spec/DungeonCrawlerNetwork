@@ -90,10 +90,11 @@ public class PistolShotState : State
             customData.direction.y = 0;
             customData.direction.Normalize();
             customData.direction = customData.direction.RoundVector3(4);
-            
+            GameObject gun = controller.transform.FindRecusiveChild("ScifiHandGun").gameObject;
+            gun.transform.Find("Flash 14").GetComponent<ParticleSystem>().Play();
             //TODO: Fix Json Serializing float with alot of space
             
-            controller.SpawnServerRpc(projectile.name, controller.transform.FindRecusiveChild("ShootPoint").position, Quaternion.identity, JsonUtility.ToJson(customData));
+            controller.SpawnServerRpc(projectile.name, gun.transform.position, Quaternion.identity, JsonUtility.ToJson(customData));
             hasShot = true;
         }
     }
