@@ -75,7 +75,11 @@ public class StateController : NetworkBehaviour
 
     public void AnimationEvent(string eventName)
     {
-        currentState.OnAnimatorEvent(eventName);
+        if (IsOwner)
+        {
+            currentState.OnAnimatorEvent(eventName);
+        }
+        
     }
     
 
