@@ -14,6 +14,7 @@ public class CameraManager : NetworkBehaviour
     public float MinZoom = 0.1f;
     private Camera camera;
     private Transform cameraFollow;
+    private Transform playerFollowPoint;
     private Vector3 mousePos;
     private Vector2 zoomLevel;
 
@@ -23,6 +24,7 @@ public class CameraManager : NetworkBehaviour
     private void Start()
     {
         //GetCamera();
+        
     }
 
     private void Update()
@@ -45,7 +47,7 @@ public class CameraManager : NetworkBehaviour
         //cameraFollow.position = transform.position;
         //cameraFollow.position = Vector3.Lerp(transform.position, camera.transform.position, 0.05f);
         var smoothSpeed = 0.05f;
-        var smoothPosition = Vector3.Lerp(cameraFollow.position, transform.position, smoothSpeed);
+        var smoothPosition = Vector3.Lerp(cameraFollow.position, playerFollowPoint.position , smoothSpeed);
         cameraFollow.position = smoothPosition;
  
         /*// Lerp toward target rotation at all times.
@@ -58,6 +60,7 @@ public class CameraManager : NetworkBehaviour
         //camera = FindObjectOfType<Camera>();
         camera = FindObjectOfType<Camera>();
         cameraFollow = camera.transform.parent;
+        playerFollowPoint = transform.FindRecusiveChild("Spine_03");
         //camera.GetComponentInParent<CameraFollow>().objToFollow = transform;
     }
     private void ManageCameraRotation(bool getMouseButton)
