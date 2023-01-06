@@ -42,11 +42,11 @@ public class CameraManager : NetworkBehaviour
 
     private void HandleCameraFollow()
     {
-        cameraFollow.position = transform.position;
+        //cameraFollow.position = transform.position;
         //cameraFollow.position = Vector3.Lerp(transform.position, camera.transform.position, 0.05f);
-        //var smoothSpeed = 0.05f;
-        //var smoothPosition = Vector3.Lerp(cameraFollow.position, transform.position, smoothSpeed);
-        //cameraFollow.position = smoothPosition;
+        var smoothSpeed = 0.05f;
+        var smoothPosition = Vector3.Lerp(cameraFollow.position, transform.position, smoothSpeed);
+        cameraFollow.position = smoothPosition;
  
         /*// Lerp toward target rotation at all times.
         var smoothRotation = Quaternion.Lerp(cameraFollow.rotation, transform.rotation, smoothSpeed);

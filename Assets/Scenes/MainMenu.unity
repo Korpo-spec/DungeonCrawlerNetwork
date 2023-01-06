@@ -477,7 +477,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1319415880}
-  - component: {fileID: 1319415879}
   m_Layer: 0
   m_Name: Camera Holder
   m_TagString: Untagged
@@ -485,20 +484,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1319415879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319415878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba6ca69978d5fbe49bde3ca4ebe7c316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objToFollow: {fileID: 0}
-  cameraRef: {fileID: 0}
 --- !u!4 &1319415880
 Transform:
   m_ObjectHideFlags: 0
