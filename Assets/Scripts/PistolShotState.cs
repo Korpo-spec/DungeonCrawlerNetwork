@@ -45,6 +45,7 @@ public class PistolShotState : State
                 controller.transform.rotation = Quaternion.LookRotation(vec, Vector3.up);
                 controller.transform.rotation = Quaternion.Euler(controller.transform.rotation.eulerAngles + new Vector3(0,90,0));
                 networkAnimator.SetTrigger(ShootGun);
+                return;
             }
             else
             {
@@ -62,13 +63,12 @@ public class PistolShotState : State
         
         
         
-        
-        if (!networkAnimator.Animator.IsPlayingState("ShootingGun"))
+        if (!networkAnimator.Animator.IsPlayingState("ShootingGun") && hasShot)
         {
-            
-            Debug.Log("transition");
             controller.Transistion(movementstate);
+            
         }
+        
 
     }
 
