@@ -15,6 +15,8 @@ public class PistolShotState : State
     private NetworkAnimator networkAnimator;
     private bool hasShot;
     private bool aiming;
+
+    private Vector3 shotDirection;
     
     
     private static readonly int ShootGun = Animator.StringToHash("ShootGun");
@@ -40,6 +42,7 @@ public class PistolShotState : State
             rangeObj.transform.rotation = Quaternion.LookRotation(vec, Vector3.up);
             if (Input.GetMouseButtonDown(0))
             {
+                shotDirection = vec;
                 aiming = false;
                 Destroy(rangeObj);
                 controller.transform.rotation = Quaternion.LookRotation(vec, Vector3.up);
@@ -81,11 +84,9 @@ public class PistolShotState : State
         if (!hasShot)
         {
             ProjectileSpawnData customData = new ProjectileSpawnData();
-            Vector3 vec = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,10));
-            vec.y = controller.transform.position.y;
-            vec -= controller.transform.position;
             
-            customData.direction = vec;
+            
+            customData.direction = shotDirection;
             customData.direction.y = 0;
             customData.direction.Normalize();
             customData.direction = customData.direction.RoundVector3(4);
