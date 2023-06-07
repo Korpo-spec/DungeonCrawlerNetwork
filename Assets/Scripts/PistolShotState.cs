@@ -36,8 +36,15 @@ public class PistolShotState : State
         //rangeObj.transform.rotation = Quaternion.Euler(Camera.main.ScreenToWorldPoint(Input.mousePosition) -controller.transform.position);
         if (aiming)
         {
-            Vector3 vec = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,10));
-            vec.y = controller.transform.position.y;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Plane plane = new Plane(Vector3.up, controller.transform.position);
+            Vector3 vec = controller.transform.position;
+            if (plane.Raycast(ray, out float enter))
+            {
+                vec = ray.GetPoint(enter);
+            }
+            
+            //vec.y = controller.transform.position.y;
             vec -= controller.transform.position;
             rangeObj.transform.rotation = Quaternion.LookRotation(vec, Vector3.up);
             if (Input.GetMouseButtonDown(0))
