@@ -42,7 +42,7 @@ public class MovementState : State
         }
         if (Input.GetKeyDown((KeyCode.F)))
         {
-            controller.Transistion(shootstate);
+            controller.AddState(shootstate);
         }
     }
     private void GetCamera()

@@ -93,6 +93,7 @@ public class StateController : NetworkBehaviour
         {
             state.OnExit();
         }
+        currentState.Clear();
         changeState = false;
         
         State newstate = Instantiate(changestate);
