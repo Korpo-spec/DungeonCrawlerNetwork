@@ -15,15 +15,7 @@ public class Enemy : Entity
     // Start is called before the first frame update
     void Start()
     {
-        if (IsHost)
-        {
-            target = new RectTransform();
-            GetComponent<NetworkObject>().Spawn();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     // Update is called once per frame

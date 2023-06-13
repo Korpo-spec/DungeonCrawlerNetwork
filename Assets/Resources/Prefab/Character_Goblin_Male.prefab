@@ -4663,6 +4663,7 @@ GameObject:
   - component: {fileID: 1136045749366991108}
   - component: {fileID: 1136045749366991109}
   - component: {fileID: 400851764932875062}
+  - component: {fileID: -2722345092619227803}
   m_Layer: 0
   m_Name: Character_Goblin_Male
   m_TagString: Untagged
@@ -4773,14 +4774,28 @@ MonoBehaviour:
   SyncRotAngleX: 1
   SyncRotAngleY: 1
   SyncRotAngleZ: 1
-  SyncScaleX: 1
-  SyncScaleY: 1
-  SyncScaleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
   PositionThreshold: 0.001
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 1
+--- !u!114 &-2722345092619227803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3505927951229549195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4113988ecae97ee469b402098c7ee05d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 3505927951238987835}
 --- !u!1 &3505927951229549965
 GameObject:
   m_ObjectHideFlags: 0
