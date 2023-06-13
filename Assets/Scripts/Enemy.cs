@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class Enemy : Entity
@@ -14,13 +15,21 @@ public class Enemy : Entity
     // Start is called before the first frame update
     void Start()
     {
-        target = new RectTransform();
+        if (IsHost)
+        {
+            target = new RectTransform();
+            GetComponent<NetworkObject>().Spawn();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!IsOwner) return;
         if (target)
         {
             transform.rotation = Quaternion.LookRotation(target.transform.position - transform.position, Vector3.up);
