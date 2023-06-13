@@ -89,17 +89,45 @@ public class StateController : NetworkBehaviour
 
     private void OnTransition(State changestate)
     {
-        foreach (var state in currentState)
-        {
-            state.OnExit();
-        }
-        currentState.Clear();
+        RemoveActiveStates();
         changeState = false;
         
         State newstate = Instantiate(changestate);
         currentState.Add( newstate);
         newstate.OnEnter(this);
         ignoreFirstUpdate = true;
+    }
+
+
+    public void ClearCurrentStates()
+    {
+        RemoveActiveStates();
+    }
+    public void ClearCurrentStates(State exception)
+    {
+        RemoveActiveStates(exception);
+    }
+    private void RemoveActiveStates()
+    {
+        foreach (var state in currentState)
+        {
+            state.OnExit();
+        }
+        currentState.Clear();
+    }
+    
+    private void RemoveActiveStates(State exception)
+    {
+        foreach (var state in currentState)
+        {
+            if (state == exception)
+            {
+                continue;
+            }
+            state.OnExit();
+        }
+        currentState.Clear();
+        currentState.Add(exception);
     }
 
     private void OnAdd(State changestate)

@@ -49,6 +49,7 @@ public class PistolShotState : State
             rangeObj.transform.rotation = Quaternion.LookRotation(vec, Vector3.up);
             if (Input.GetMouseButtonDown(0))
             {
+                controller.ClearCurrentStates(this);
                 shotDirection = vec;
                 aiming = false;
                 Destroy(rangeObj);
