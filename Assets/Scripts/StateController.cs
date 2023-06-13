@@ -10,17 +10,20 @@ public class StateController : NetworkBehaviour
 {
     [SerializeField] private State defaultState;
 
-    private State currentState;
+    private List<State> currentState;
 
-    private State nextState;
+    private Queue<(State state, bool hardshift)> nextState;
 
     private bool changeState;
 
     private bool ignoreFirstUpdate;
+    
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        currentState = new List<State>();
+        nextState = new Queue<(State state, bool hardshift)>();
     }
 
     public override void OnNetworkSpawn()
@@ -30,8 +33,8 @@ public class StateController : NetworkBehaviour
             enabled = false;
             return;
         }
-        currentState = Instantiate(defaultState);
-        currentState.OnEnter(this);
+        currentState.Add( Instantiate(defaultState));
+        currentState[0].OnEnter(this);
     }
     
 
@@ -46,40 +49,84 @@ public class StateController : NetworkBehaviour
             ignoreFirstUpdate = false;
             return;
         }
+
+        foreach (var state in currentState)
+        {
+            state.UpdateState();
+        }
         
-        currentState.UpdateState();
         if (changeState)
         {
-            OnTransition();
+            for (int i = 0; i < nextState.Count; i++)
+            {
+                var nextstate = nextState.Dequeue();
+                if (nextstate.hardshift)
+                {
+                    OnTransition(nextstate.state);
+                }
+                else
+                {
+                    OnAdd(nextstate.state);
+                }
+                
+            }
+            
             return;
         }
     }
 
     public void Transistion(State newstate)
     {
-        nextState = newstate;
+        nextState.Enqueue((newstate, true)); 
         changeState = true;
     }
 
-    private void OnTransition()
+    public void AddState(State newstate)
     {
+        nextState.Enqueue((newstate, false)); 
+        changeState = true;
+    }
+
+    private void OnTransition(State changestate)
+    {
+        foreach (var state in currentState)
+        {
+            state.OnExit();
+        }
         changeState = false;
-        currentState.OnExit();
-        currentState = Instantiate(nextState);
-        currentState.OnEnter(this);
+        
+        State newstate = Instantiate(changestate);
+        currentState.Add( newstate);
+        newstate.OnEnter(this);
         ignoreFirstUpdate = true;
     }
 
+    private void OnAdd(State changestate)
+    {
+        changeState = false;
+        
+        State newstate = Instantiate(changestate);
+        currentState.Add( newstate);
+        newstate.OnEnter(this);
+        ignoreFirstUpdate = true;
+    }
     private void OnTriggerEnter(Collider other)
     {
-        currentState.OnTriggerEnter(other);
+        foreach (var state in currentState)
+        {
+            state.OnTriggerEnter(other);
+        }
+        
     }
 
     public void AnimationEvent(string eventName)
     {
         if (IsOwner)
         {
-            currentState.OnAnimatorEvent(eventName);
+            foreach (var state in currentState)
+            {
+                state.OnAnimatorEvent(eventName);
+            }
         }
         
     }
@@ -114,7 +161,7 @@ public class StateController : NetworkBehaviour
     {
         if (IsOwner)
         {
-            currentState.OnGetSpawnedGameObj(gameObjectName.ToString());
+            //currentState.OnGetSpawnedGameObj(gameObjectName.ToString());
         }
     }
     
