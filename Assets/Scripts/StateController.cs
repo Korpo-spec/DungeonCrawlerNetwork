@@ -5,6 +5,7 @@ using DefaultNamespace;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
+using Object = System.Object;
 
 public class StateController : NetworkBehaviour
 {
@@ -13,6 +14,8 @@ public class StateController : NetworkBehaviour
     private List<State> currentState;
 
     private Queue<(State state, bool hardshift)> nextState;
+    
+    
 
     private bool changeState;
 
@@ -22,6 +25,7 @@ public class StateController : NetworkBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        
         currentState = new List<State>();
         nextState = new Queue<(State state, bool hardshift)>();
     }

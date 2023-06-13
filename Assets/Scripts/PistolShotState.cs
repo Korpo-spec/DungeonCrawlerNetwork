@@ -47,6 +47,7 @@ public class PistolShotState : State
             //vec.y = controller.transform.position.y;
             vec -= controller.transform.position;
             rangeObj.transform.rotation = Quaternion.LookRotation(vec, Vector3.up);
+            rangeObj.transform.position = controller.transform.position;
             if (Input.GetMouseButtonDown(0))
             {
                 controller.ClearCurrentStates(this);
