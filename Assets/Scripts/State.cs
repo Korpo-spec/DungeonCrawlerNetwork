@@ -6,6 +6,7 @@ using UnityEngine;
 public class State : ScriptableObject
 {
     public StateController controller;
+    [SerializeField] public int priority;
 
     [NonSerialized] private bool instatiated;
     

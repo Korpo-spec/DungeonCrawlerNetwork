@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DefaultNamespace;
 using Unity.Collections;
 using Unity.Netcode;
@@ -14,8 +15,8 @@ public class StateController : NetworkBehaviour
     private List<State> currentState;
 
     private Queue<(State state, bool hardshift)> nextState;
-    
-    
+
+    public int highestPriority => currentState.OrderBy(e => e.priority).First().priority;
 
     private bool changeState;
 
@@ -64,6 +65,7 @@ public class StateController : NetworkBehaviour
             for (int i = 0; i < nextState.Count; i++)
             {
                 var nextstate = nextState.Dequeue();
+                
                 if (nextstate.hardshift)
                 {
                     OnTransition(nextstate.state);
@@ -87,6 +89,13 @@ public class StateController : NetworkBehaviour
 
     public void AddState(State newstate)
     {
+        foreach (var state in currentState)
+        {
+            if (state.GetType() == newstate.GetType())
+            {
+                return;
+            }
+        }
         nextState.Enqueue((newstate, false)); 
         changeState = true;
     }
