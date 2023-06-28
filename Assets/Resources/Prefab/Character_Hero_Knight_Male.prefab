@@ -75,7 +75,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: -2859968957368036613}
   ability1: {fileID: 0}
-  _container: {fileID: 11400000, guid: 26c9b3d9c85bd104ba8bb7671636d4b6, type: 2}
+  _container: {fileID: 11400000, guid: 81b2db2fca2867c489e473568c83d39b, type: 2}
+  _container2: {fileID: 11400000, guid: 26c9b3d9c85bd104ba8bb7671636d4b6, type: 2}
+  classChoice: Void
 --- !u!114 &-2859968957368036613
 MonoBehaviour:
   m_ObjectHideFlags: 0

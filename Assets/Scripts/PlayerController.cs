@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
@@ -13,18 +14,33 @@ public class PlayerController : NetworkBehaviour
 
     [SerializeField] private Dictionary<string, ClassContainer> _classes;
     [SerializeField] private ClassContainer _container;
+    [SerializeField] private ClassContainer _container2;
+    [SerializeField] public string classChoice;
+    
 
     private void Awake()
     {
         _classes = new Dictionary<string, ClassContainer>();
         _classes.Add("Void", _container);
+        _classes.Add("Knight", _container2);
+        
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
         
-        SetClassServer("Void");
+        
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner)
+        {
+            return;
+        }
+        SetClassServerRpc(classChoice);
     }
 
     // Update is called once per frame
@@ -61,8 +77,8 @@ public class PlayerController : NetworkBehaviour
        
     }
 
-    
-    public void SetClassServer(FixedString64Bytes className)
+    [ClientRpc]
+    public void SendClassNameClientRpc(FixedString64Bytes className)
     {
         GameObject classMesh = _classes[className.ToString()].mesh;
 
@@ -75,6 +91,18 @@ public class PlayerController : NetworkBehaviour
         }
         
         GetComponent<Animator>().Rebind();
-        Debug.Log(transform.name, gameObject);
+        
+        Debug.Log("Object name: "+ transform.name, gameObject);
     }
+    
+    [ServerRpc(RequireOwnership = false)]
+    public void SetClassServerRpc(FixedString64Bytes className)
+    {
+        SendClassNameClientRpc(className);
+        
+        
+        Debug.Log("Object name: "+ transform.name, gameObject);
+        
+    }
+
 }

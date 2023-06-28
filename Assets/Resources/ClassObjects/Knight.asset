@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90eca9dc9b7aa64f80f6a1ab0fb5db0, type: 3}
   m_Name: Knight
   m_EditorClassIdentifier: 
-  mesh: {fileID: 1428387009061096, guid: 8682877219914e449a43383736c8f078, type: 3}
+  mesh: {fileID: 131680, guid: 356557810e9d0c2458b915cf6e4815c1, type: 3}
   abilities: []

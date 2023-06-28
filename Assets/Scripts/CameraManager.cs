@@ -30,7 +30,7 @@ public class CameraManager : NetworkBehaviour
     private void Update()
     {
         if(!IsOwner) return;
-        if (!camera) GetCamera();
+        if (!camera || !playerFollowPoint) GetCamera();
 
         ManageCameraRotation(Input.GetMouseButton(1));
         ManageCameraZoom(Input.mouseScrollDelta);
