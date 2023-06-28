@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClassContainer : MonoBehaviour
+[CreateAssetMenu]
+public class ClassContainer : ScriptableObject
 {
-    [SerializeField] private GameObject Mesh;
+    [SerializeField] public GameObject mesh;
+    [SerializeField] public List<Ability> abilities;
 }
