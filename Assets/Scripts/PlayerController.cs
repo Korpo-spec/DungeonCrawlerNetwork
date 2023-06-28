@@ -66,14 +66,15 @@ public class PlayerController : NetworkBehaviour
     {
         GameObject classMesh = _classes[className.ToString()].mesh;
 
-        
-        for (int i = 0; i < classMesh.transform.childCount; i++)
+        var g = Instantiate(classMesh.transform.gameObject);
+        g.transform.parent = transform;
+        for (int i = 0; i < g.transform.childCount; i++)
         {
-            var g = Instantiate(classMesh.transform.GetChild(i).gameObject);
-            g.transform.parent = transform;
+            var child = g.transform.GetChild(i);
+            child.transform.parent = transform;
         }
         
-        
+        GetComponent<Animator>().Rebind();
         Debug.Log(transform.name, gameObject);
     }
 }

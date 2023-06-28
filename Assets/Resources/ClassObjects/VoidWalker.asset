@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f90eca9dc9b7aa64f80f6a1ab0fb5db0, type: 3}
-  m_Name: Classes
+  m_Name: VoidWalker
   m_EditorClassIdentifier: 
   mesh: {fileID: 131680, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
   abilities: []
