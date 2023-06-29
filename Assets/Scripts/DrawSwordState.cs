@@ -8,8 +8,7 @@ public class DrawSwordState : State
 {
     [SerializeField] private MovementState movementstate;
 
-    private Transform Sword;
-    private Transform Hand;
+    
     
     private Vector3 Handpos = new Vector3(-3.9f,-20.4f,-42.6f);
     private Vector3 Handrot = new Vector3(70.1f, 33.27f, 30.84f);
@@ -27,8 +26,7 @@ public class DrawSwordState : State
     public override void OnEnter(StateController controller)
     {
         base.OnEnter(controller);
-        Sword = controller.transform.FindRecusiveChild("SM_Item_Sword");
-        Hand = controller.transform.FindRecusiveChild("Hand_R");
+        
         networkAnimator = controller.GetComponent<NetworkAnimator>();
         networkAnimator.Animator.applyRootMotion = false;
         networkAnimator.SetTrigger("DrawSword");
