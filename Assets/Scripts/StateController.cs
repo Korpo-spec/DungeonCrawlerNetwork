@@ -173,7 +173,21 @@ public class StateController : NetworkBehaviour
         
     }
 
-    
+    [ServerRpc]
+    public void ChangeParentServerRpc(FixedString64Bytes objectToChange, FixedString64Bytes newParent, Vector3 pos, Quaternion rot)
+    {
+        InternalChangeParentClientRpc(objectToChange, newParent, pos, rot);
+    }
+
+    [ClientRpc]
+    private void InternalChangeParentClientRpc(FixedString64Bytes objectToChange, FixedString64Bytes newParent, Vector3 pos, Quaternion rot)
+    {
+        Transform Sword = transform.FindRecusiveChild(objectToChange.ToString());
+        Transform Hand = transform.FindRecusiveChild(newParent.ToString());
+        Sword.SetParent(Hand,false);
+        Sword.transform.localPosition = pos;
+        Sword.transform.localRotation = rot;
+    }
 
     private uint id;
     

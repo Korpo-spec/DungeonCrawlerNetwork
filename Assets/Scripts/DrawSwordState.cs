@@ -46,11 +46,7 @@ public class DrawSwordState : State
         {
             return;
         }
-        Sword.SetParent(Hand,false);
-        Sword.transform.localPosition = Handpos;
-        Sword.transform.localRotation = Quaternion.Euler(Handrot);
-        
-        networkAnimator.Animator.applyRootMotion = true;
+        controller.ChangeParentServerRpc("SM_Item_Sword", "Hand_R", Handpos, Quaternion.Euler(Handrot));
         
     }
 
