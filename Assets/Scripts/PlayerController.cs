@@ -17,7 +17,7 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private ClassContainer _container2;
     [SerializeField] public string classChoice;
 
-    [SerializeField]private NetworkVariable<FixedString64Bytes> internalClassChoice;
+    private NetworkVariable<FixedString64Bytes> internalClassChoice;
 
     private void Awake()
     {
