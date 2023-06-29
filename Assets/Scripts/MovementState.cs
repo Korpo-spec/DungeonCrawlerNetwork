@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "State/Player/Movement")]
 public class MovementState : State
 {
-    [SerializeField] private PistolShotState shootstate;
+    //[SerializeField] private PistolShotState shootstate;
     private Animator animator;
     private Camera camera;
 

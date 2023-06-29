@@ -66,15 +66,7 @@ public class PistolShotState : State
             
             
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         if (!networkAnimator.Animator.IsPlayingState("ShootingGun") && hasShot)
         {
             controller.Transistion(movementstate);
