@@ -377,8 +377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9f92e63f80c97469cce8f330dcfb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JonasPublicIP: 193.11.160.199
-  CasperPublicIP: 193.11.162.235
+  JonasPublicIP: 10.10.70.235
+  CasperPublicIP: 10.10.70.146
 --- !u!1 &1255048667
 GameObject:
   m_ObjectHideFlags: 0
