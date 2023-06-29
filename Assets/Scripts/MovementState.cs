@@ -40,10 +40,6 @@ public class MovementState : State
             animator.SetBool(Running, false);
             animator.SetBool(Walking, false);
         }
-        if (Input.GetKeyDown((KeyCode.F)))
-        {
-            controller.AddState(shootstate);
-        }
     }
     private void GetCamera()
     {

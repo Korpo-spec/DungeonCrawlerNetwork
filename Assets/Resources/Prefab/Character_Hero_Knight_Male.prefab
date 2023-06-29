@@ -74,10 +74,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: -2859968957368036613}
-  ability1: {fileID: 0}
+  ability1: {fileID: 11400000, guid: 7e9032ea60e1f6049888cc7ad22e804f, type: 2}
   _container: {fileID: 11400000, guid: 81b2db2fca2867c489e473568c83d39b, type: 2}
   _container2: {fileID: 11400000, guid: 26c9b3d9c85bd104ba8bb7671636d4b6, type: 2}
-  classChoice: Void
+  classChoice: Knight
   internalClassChoice:
     m_InternalValue:
       utf8LengthInBytes: 0

@@ -40,13 +40,21 @@ public class PlayerController : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        internalClassChoice.OnValueChanged += SetClassInternal;
+        if (internalClassChoice.Value == "")
+        {
+            internalClassChoice.OnValueChanged += SetClassInternal;
+        }
+        else
+        {
+            SetClassInternal(internalClassChoice.Value, internalClassChoice.Value);
+        }
+        
         if (IsOwner)
         {
             SetClassServerRpc(classChoice);
             Debug.Log(internalClassChoice.Value);
         }
-        
+        //SetClassInternal(internalClassChoice.Value, internalClassChoice.Value);
         Debug.Log(internalClassChoice.Value);
         //SetClassInternal(internalClassChoice.Value);
         if (!IsOwner)
@@ -111,7 +119,7 @@ public class PlayerController : NetworkBehaviour
     [ClientRpc]
     public void SendClassNameClientRpc(FixedString64Bytes className)
     {
-        SetClassInternal(className, className);
+        SetClassInternal(internalClassChoice.Value, internalClassChoice.Value);
     }
     
     [ServerRpc(RequireOwnership = false)]
