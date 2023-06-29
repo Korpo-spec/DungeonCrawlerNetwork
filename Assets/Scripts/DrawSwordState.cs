@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using Unity.Netcode.Components;
 using UnityEngine;
 [CreateAssetMenu(menuName = "State/Player/DrawSword")]
@@ -21,7 +22,7 @@ public class DrawSwordState : State
     
     
     
-
+    
     
     public override void OnEnter(StateController controller)
     {
@@ -52,4 +53,8 @@ public class DrawSwordState : State
         networkAnimator.Animator.applyRootMotion = true;
         
     }
+
+    
+    
+    
 }
