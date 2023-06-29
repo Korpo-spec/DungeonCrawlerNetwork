@@ -26,7 +26,7 @@ public class DrawSwordState : State
         base.OnEnter(controller);
         Sword = controller.transform.FindRecusiveChild("SM_Item_Sword");
         Sword.transform.localPosition = Handpos;
-        Sword.transform.rotation = Quaternion.Euler(Handrot);
+        Sword.transform.localRotation = Quaternion.Euler(Handrot);
         Hand = controller.transform.FindRecusiveChild("Hand_R");
         networkAnimator = controller.GetComponent<NetworkAnimator>();
         networkAnimator.SetTrigger("DrawSword");
