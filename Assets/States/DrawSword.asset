@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DrawSword
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  priority: 0
+  priority: 5
   movementstate: {fileID: 11400000, guid: 043e6de914461f949bfe146e4747e3ad, type: 2}

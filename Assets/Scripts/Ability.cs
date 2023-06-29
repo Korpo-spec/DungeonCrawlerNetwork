@@ -6,10 +6,19 @@ public class Ability : ScriptableObject
 {
     public Sprite sprite;
     public int cost;
+    public bool hardShift;
     public State abilityCode;
 
     public void OnAbilityCast(StateController controller)
     {
-        controller.AddState(abilityCode);
+        if (hardShift)
+        {
+            controller.Transistion(abilityCode);
+        }
+        else
+        {
+            controller.AddState(abilityCode);
+        }
+        
     }
 }

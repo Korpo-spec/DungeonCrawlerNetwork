@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   cost: 0
+  hardShift: 1
   abilityCode: {fileID: 11400000, guid: fc24b16ba8cf5c64b98f307a6edc2191, type: 2}

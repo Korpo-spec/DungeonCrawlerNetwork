@@ -14,6 +14,8 @@ public class DrawSwordState : State
     private Vector3 Handrot = new Vector3(70.1f, 33.27f, 30.84f);
     
     private NetworkAnimator networkAnimator;
+    
+    
     /*[SerializeField] private GameObject Spine;
     [SerializeField] private Transform SpinePos;*/
     
@@ -27,7 +29,9 @@ public class DrawSwordState : State
         Sword = controller.transform.FindRecusiveChild("SM_Item_Sword");
         Hand = controller.transform.FindRecusiveChild("Hand_R");
         networkAnimator = controller.GetComponent<NetworkAnimator>();
+        networkAnimator.Animator.applyRootMotion = false;
         networkAnimator.SetTrigger("DrawSword");
+        controller.ClearCurrentStates(this);
     }
 
     public override void UpdateState()
@@ -41,8 +45,11 @@ public class DrawSwordState : State
         {
             return;
         }
+        Sword.SetParent(Hand,false);
         Sword.transform.localPosition = Handpos;
         Sword.transform.localRotation = Quaternion.Euler(Handrot);
-        Sword.SetParent(Hand,false);
+        
+        networkAnimator.Animator.applyRootMotion = true;
+        
     }
 }
