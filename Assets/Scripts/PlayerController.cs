@@ -12,6 +12,7 @@ public class PlayerController : NetworkBehaviour
 
     [SerializeField] private Ability ability1;
 
+    [SerializeField] private List<Ability> _abilities;
     [SerializeField] private Dictionary<string, ClassContainer> _classes;
     [SerializeField] private ClassContainer _container;
     [SerializeField] private ClassContainer _container2;
@@ -74,17 +75,17 @@ public class PlayerController : NetworkBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            CastAbility(ability1);
+            CastAbility(_abilities[0]);
             return;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            
+            CastAbility(_abilities[1]);
             return;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            
+            CastAbility(_abilities[2]);
             return;
         }
     }
