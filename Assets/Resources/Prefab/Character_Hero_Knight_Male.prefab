@@ -80,7 +80,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c4fe8d1351e1cf4f8a24a8297930a31, type: 2}
   _container: {fileID: 11400000, guid: 81b2db2fca2867c489e473568c83d39b, type: 2}
   _container2: {fileID: 11400000, guid: 26c9b3d9c85bd104ba8bb7671636d4b6, type: 2}
-  classChoice: Knight
+  classChoice: Void
 --- !u!114 &-2859968957368036613
 MonoBehaviour:
   m_ObjectHideFlags: 0

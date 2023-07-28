@@ -4664,6 +4664,7 @@ GameObject:
   - component: {fileID: 1136045749366991109}
   - component: {fileID: 400851764932875062}
   - component: {fileID: -2722345092619227803}
+  - component: {fileID: 7625353814788341214}
   m_Layer: 0
   m_Name: Character_Goblin_Male
   m_TagString: Untagged
@@ -4796,6 +4797,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TransitionStateInfoList: []
   m_Animator: {fileID: 3505927951238987835}
+--- !u!114 &7625353814788341214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3505927951229549195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dfd4c60b699a1147bc8e02be4344f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &3505927951229549965
 GameObject:
   m_ObjectHideFlags: 0
